@@ -1,6 +1,7 @@
 # Plot a nice confusion matrix
+# adapted from - https://stackoverflow.com/questions/19233771/sklearn-plot-confusion-matrix-with-labels/48018785
 
-def cm_analysis(y_true, y_pred, labels, ymap=None, figsize=(10,10)):
+def cm_analysis(y_true, y_pred, labels, plot_title, ymap=None, figsize=(10,10)):
     """
     Generate matrix plot of confusion matrix with pretty annotations.
     The plot image is saved to disk.
@@ -40,6 +41,11 @@ def cm_analysis(y_true, y_pred, labels, ymap=None, figsize=(10,10)):
     cm.index.name = 'Actual'
     cm.columns.name = 'Predicted'
     fig, ax = plt.subplots(figsize=figsize)
+    plt.title(plot_title)
     sns.heatmap(cm, annot=annot, fmt='', ax=ax)
     #plt.savefig(filename)
     plt.show()
+    
+    
+cm_analysis(banking_tstY, best_banking_decision_tree.predict(banking_tstX), best_banking_decision_tree.classes_, 'Banking - Decision Tree')
+
