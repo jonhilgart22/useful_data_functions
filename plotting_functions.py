@@ -43,6 +43,8 @@ def cm_analysis(y_true, y_pred, labels, plot_title, ymap=None, figsize=(10,10)):
     fig, ax = plt.subplots(figsize=figsize)
     plt.title(plot_title)
     sns.heatmap(cm, annot=annot, fmt='', ax=ax)
+    plt.rcParams.update({'font.size': 22})
+
     #plt.savefig(filename)
     plt.show()
     
